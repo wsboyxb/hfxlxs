@@ -1,0 +1,24 @@
+CREATE  TABLE dist_city_org_type(
+  cityorgtype varchar(255) DEFAULT NULL COMMENT ' ', 
+  cityorgtypename varchar(255) DEFAULT NULL COMMENT ' ', 
+  provinceorgtype varchar(255) DEFAULT NULL COMMENT ' ', 
+  __alibaba_rds_row_id__ bigint DEFAULT NULL COMMENT 'Implicit '
+)
+COMMENT ' '
+CLUSTERED BY ( 
+  cityorgtype) 
+INTO 1 BUCKETS
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.ql.io.orc.OrcSerde' 
+WITH SERDEPROPERTIES ( 
+  'serialization.format'='1') 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'
+LOCATION
+  'hdfs://service/user/hive/inceptor/user/hive/warehouse/ods_bsp_orc.db/gwddc_admin/dist_city_org_type'
+TBLPROPERTIES (
+  'transactional'='true', 
+  'transient_lastDdlTime'='1568627899')
+
